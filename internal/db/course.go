@@ -21,13 +21,13 @@ func NewCource(db *sql.DB) *Course {
 func (c *Course) Create(name string, description string, categoryId string) (Course, error) {
 	id := uuid.New().String()
 
-	_, err := c.db.Exec("INSERT INTO courses (id, name, description, category_id) VALUES($1, $2, $3, $4)", id, name, description, categoryId)
+	_, err := c.db.Exec("INSERT INTO courses (id, name, description, category_id) VALUES ($1, $2, $3, $4)", id, name, description, categoryId)
 
 	if err != nil {
 		return Course{}, err
 	}
 
-	return Course{ID: id, Name: name, Description: description, CategoryId: categoryId}, nil
+	return Course{ID: id, Name: name, Description: description}, nil
 }
 
 func (c *Course) FindAll() ([]Course, error) {

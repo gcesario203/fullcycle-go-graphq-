@@ -647,9 +647,9 @@ func (ec *executionContext) _Course_description(ctx context.Context, field graph
 		}
 		return graphql.Null
 	}
-	res := resTmp.(*model.Category)
+	res := resTmp.(string)
 	fc.Result = res
-	return ec.marshalNCategory2ᚖgithubᚗcomᚋgcesario203ᚋfullcycleᚑgoᚑgraphqᚑᚋgraphᚋmodelᚐCategory(ctx, field.Selections, res)
+	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Course_description(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -659,17 +659,7 @@ func (ec *executionContext) fieldContext_Course_description(ctx context.Context,
 		IsMethod:   false,
 		IsResolver: false,
 		Child: func(ctx context.Context, field graphql.CollectedField) (*graphql.FieldContext, error) {
-			switch field.Name {
-			case "id":
-				return ec.fieldContext_Category_id(ctx, field)
-			case "name":
-				return ec.fieldContext_Category_name(ctx, field)
-			case "description":
-				return ec.fieldContext_Category_description(ctx, field)
-			case "courses":
-				return ec.fieldContext_Category_courses(ctx, field)
-			}
-			return nil, fmt.Errorf("no field named %q was found under type Category", field.Name)
+			return nil, errors.New("field of type String does not have child fields")
 		},
 	}
 	return fc, nil
